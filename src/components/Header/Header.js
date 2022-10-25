@@ -4,6 +4,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from 'react-router-dom';
+import './Header.css'
+// import { MdDarkMode } from "react-icons/fa";
 
 const Header = () => {
     return (
@@ -57,6 +59,7 @@ const Header = () => {
                 </Link>
               </Nav.Link>
             </Nav>
+            
             <Nav>
               <Nav.Link>
                 <Button variant="outline-primary">

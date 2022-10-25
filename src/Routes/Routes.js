@@ -6,14 +6,14 @@ import FAQ from "../components/FAQ/FAQ"
 import Blog from "../components/Blog/Blog";
 import Login from "../components/Login/Login/Login";
 import Register from "../components/Login/Register/Register";
-// import ErrorPage from "../components/ErrorPage/ErrorPage";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 import CourseFeatures from "../components/CourseFeatures/CourseFeatures";
 
 export const routes = createBrowserRouter([
     {
         path: "/",
         element: <Main/>,
-        // errorElement: <ErrorPage/>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 path: '/',
@@ -21,12 +21,12 @@ export const routes = createBrowserRouter([
             },
             {
                 path: "/courses",
-                loader: () => fetch('fakeD.json'),
+                loader: () => fetch("http://localhost:5000/courses"),
                 element: <Courses/>
             },
             {
                 path: "/courses/:id",
-                loader: ({params}) => fetch(`fakeD.json/${params.id}`),
+                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`),
                 element: <CourseFeatures/>
             },
             {
