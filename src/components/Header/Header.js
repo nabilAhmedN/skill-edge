@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,7 +10,12 @@ const Header = () => {
       <Navbar bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand>
-            <Link to="/">Dragon News</Link>
+            <Link
+              className="items-center text-decoration-none text-dark"
+              to="/"
+            >
+              Dragon News
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
@@ -19,21 +25,48 @@ const Header = () => {
               navbarScroll
             >
               <Nav.Link>
-                <Link to="/">Home</Link>
+                <Link
+                  className="items-center text-decoration-none text-dark"
+                  to="/"
+                >
+                  Home
+                </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/courses">Courses</Link>
+                <Link
+                  className="items-center text-decoration-none text-dark"
+                  to="/courses"
+                >
+                  Courses
+                </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/faq">FAQ</Link>
+                <Link
+                  className="items-center text-decoration-none text-dark"
+                  to="/faq"
+                >
+                  FAQ
+                </Link>
               </Nav.Link>
               <Nav.Link>
-                <Link to="/blog">Blog</Link>
+                <Link
+                  className="items-center text-decoration-none text-dark"
+                  to="/blog"
+                >
+                  Blog
+                </Link>
               </Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link>
-                <Link to="/login">Login</Link>
+                <Button variant="outline-primary">
+                  <Link
+                    className="items-center text-decoration-none text-dark"
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </Button>
               </Nav.Link>
               <Nav.Link>
                 <Link to="/register">Register</Link>
