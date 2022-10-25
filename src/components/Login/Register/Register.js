@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 
 const Register = () => {
     return (
-      <Form >
+      <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Your Name</Form.Label>
           <Form.Control name="name" type="text" placeholder="Your Name" />
