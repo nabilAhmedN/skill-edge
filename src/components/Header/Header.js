@@ -29,7 +29,7 @@ const Header = () => {
               <Nav.Link>
                 <Link
                   className="items-center text-decoration-none text-dark"
-                  to="/"
+                  to="/home"
                 >
                   Home
                 </Link>
