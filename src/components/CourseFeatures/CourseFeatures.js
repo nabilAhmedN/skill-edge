@@ -1,6 +1,6 @@
 // import React, { useRef } from 'react';
 import { useRef } from 'react';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import { useReactToPrint } from "react-to-print";
 
@@ -10,7 +10,7 @@ const CourseFeatures = () => {
 
     const course = useLoaderData()
 
-    const { title, photo, about } = course;
+    const { title, titleName, photo, about } = course;
 
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
@@ -23,17 +23,25 @@ const CourseFeatures = () => {
   
 
     return (
-      <div className="col-lg-4 col-md-12 col-sm-12" ref={componentRef}>
+      <div className="container mt-4" ref={componentRef}>
+        <div className="d-flex justify-content-between">
+          <h1>{titleName}</h1>
+          <Button variant="light" onClick={handlePrint} className="me-2 ">
+            Download
+          </Button>
+        </div>
         <Card>
-          <Card.Img variant="top" src={photo} />
+          <Card.Img
+            className="feat-img"
+            style={{ height: "380px" }}
+            variant="top"
+            src={photo}
+          />
           <Card.Body>
-            <Card.Title className="fw-bolder">{title}</Card.Title>
-            <Card.Text>{about}</Card.Text>
+            <Card.Text className="fw-bolder">{title}</Card.Text>
+            <Card.Text className="">{about}</Card.Text>
           </Card.Body>
         </Card>
-        <div>
-          <button onClick={handlePrint}>Print</button>
-        </div>
       </div>
     );
 };

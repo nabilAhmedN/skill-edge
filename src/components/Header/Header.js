@@ -66,6 +66,14 @@ const Header = () => {
                   Blog
                 </Link>
               </Nav.Link>
+              <Nav.Link>
+                <Link
+                  className="items-center text-decoration-none text-dark"
+                  to="/sub"
+                >
+                  Sub
+                </Link>
+              </Nav.Link>
             </Nav>
             <div className="d-flex">
               <div className="form-check form-switch ms-auto mt-3 me-3">
@@ -89,7 +97,7 @@ const Header = () => {
               </div>
             </div>
             <Nav>
-              <Nav.Link eventKey={2} href="#memes">
+              <Nav.Link eventKey={2}>
                 {user?.photoURL ? (
                   <Image
                     style={{ height: "30px" }}
@@ -100,14 +108,12 @@ const Header = () => {
                   <FaUser />
                 )}
               </Nav.Link>
-              <Nav.Link href="#deets">
+              <Nav.Link>
                 {user?.uid ? (
                   <>
                     <span>{user?.displayName}</span>
                     <Button variant="outline-primary" onClick={handleLogOut}>
-                      <Link
-                        className="items-center text-decoration-none text-dark"
-                      >
+                      <Link className="items-center text-decoration-none text-dark">
                         LogOut
                       </Link>
                     </Button>

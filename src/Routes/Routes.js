@@ -8,6 +8,7 @@ import Login from "../components/Login/Login/Login";
 import Register from "../components/Login/Register/Register";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import CourseFeatures from "../components/CourseFeatures/CourseFeatures";
+import Subscription from "../components/Subscription/Subscription";
 
 export const routes = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ export const routes = createBrowserRouter([
             {
                 path: "/blog",
                 element: <Blog/>
+            },
+            {
+                path: "/sub",
+                element: <Subscription/>
             },
             {
                 path: "/login",

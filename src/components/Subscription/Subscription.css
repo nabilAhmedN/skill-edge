@@ -1,0 +1,37 @@
+.part1{ 
+    background-color: #fff5f7;
+    border-radius:12px;
+    width:300px;
+    height:400px;
+}
+    
+.part2{
+    background-color:#fd98a7;
+    border-radius:12px;
+    width:300px;
+    height:400px
+}
+.part3{
+    background-color:#fff5f7;
+    border-radius:12px;
+    width:300px;
+    height:400px}
+.free{font-size:15px;
+    font-weight:700}
+.amount{
+    font-size:28px;
+    font-weight:700}
+.user{
+    font-size:12px
+}
+.information{
+    font-size:16px;
+    font-weight:600
+}
+
+@media screen and (max-width:767px){
+    .part1, .part2, .part3{ 
+        margin-left: 11%;
+        margin-top: 20px;
+    }
+}
