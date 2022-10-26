@@ -1,15 +1,21 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import './Header.css'
-// import { MdDarkMode } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+     logOut()
+       .then(() => {})
+       .catch((error) => console.error(error));
+  }
     return (
       <Navbar bg="light" expand="lg">
         <Container fluid>
@@ -83,18 +89,43 @@ const Header = () => {
               </div>
             </div>
             <Nav>
-              <Nav.Link>
-                <Button variant="outline-primary">
-                  <Link
-                    className="items-center text-decoration-none text-dark"
-                    to="/login"
-                  >
-                    Login
-                  </Link>
-                </Button>
+              <Nav.Link eventKey={2} href="#memes">
+                {user?.photoURL ? (
+                  <Image
+                    style={{ height: "30px" }}
+                    roundedCircle
+                    src={user?.photoURL}
+                  ></Image>
+                ) : (
+                  <FaUser />
+                )}
               </Nav.Link>
-              <Nav.Link>
-                <Link to="/register">Register</Link>
+              <Nav.Link href="#deets">
+                {user?.uid ? (
+                  <>
+                    <span>{user?.displayName}</span>
+                    <Button variant="outline-primary" onClick={handleLogOut}>
+                      <Link
+                        className="items-center text-decoration-none text-dark"
+                        to="/login"
+                      >
+                        Login
+                      </Link>
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button variant="outline-primary">
+                      <Link
+                        className="items-center text-decoration-none text-dark"
+                        to="/login"
+                      >
+                        Login
+                      </Link>
+                    </Button>
+                    {/* <Link to="/register">Register</Link> */}
+                  </>
+                )}
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

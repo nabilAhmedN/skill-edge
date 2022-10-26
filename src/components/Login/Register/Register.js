@@ -3,10 +3,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Link } from 'react-router-dom';
 
+
 const Register = () => {
     return (
-      <div>
-        <Form className="w-50 mx-auto bg-light p-4 mt-5">
+      <div className="w-50 mx-auto bg-light p-4 mt-5">
+        <Form>
           <h2 className="text-center text-primary">Please Registration</h2>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Your Name</Form.Label>
@@ -37,22 +38,15 @@ const Register = () => {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check
-              type="checkbox"
-              label={
-                <>
-                  Accept <Link to="/terms">terms and conditions</Link>
-                </>
-              }
-            />
-          </Form.Group>
-
           <Button variant="primary" type="submit">
             Register
           </Button>
-          <Form.Text className="text-danger"></Form.Text>
         </Form>
+        <p className='pt-2'>
+          <small>
+            ALready have an account <Link to="/login">Login</Link>{" "}
+          </small>
+        </p>
       </div>
     );
 };
