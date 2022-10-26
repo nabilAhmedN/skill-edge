@@ -1,5 +1,5 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import {
@@ -11,7 +11,10 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
 
-  const { googleProviderLogin, githubProviderLogin } = useContext(AuthContext);
+  const [error, setError] = useState('');
+
+  const { googleProviderLogin, githubProviderLogin, signIn } =
+    useContext(AuthContext);
 
   const googleProvider = new GoogleAuthProvider()
 
@@ -35,10 +38,28 @@ const Login = () => {
       .catch((error) => console.error(error));
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+        setError('')
+      })
+      .catch((error) => {
+        console.error(error)
+        setError(error.message)
+      });
+  };
 
     return (
       <div className="w-50 mx-auto bg-light p-4 mt-5">
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <h2 className="text-center text-primary">Please Login</h2>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -60,8 +81,10 @@ const Login = () => {
             />
           </Form.Group>
 
-          <Button variant="primary">Login</Button>
-          <Form.Text className="text-danger"></Form.Text>
+          <Button variant="primary" type="submit">
+            Login
+          </Button>
+          <Form.Text className="text-danger">{error}</Form.Text>
         </Form>
         <p>
           <small>
@@ -90,8 +113,7 @@ const Login = () => {
             <FaGoogle />
             Login with Google
           </Button>
-          <Button 
-          onClick={handleGithubSignIn} variant="outline-dark" size="lg">
+          <Button onClick={handleGithubSignIn} variant="outline-dark" size="lg">
             <FaGithub />
             Login with GitHub
           </Button>
