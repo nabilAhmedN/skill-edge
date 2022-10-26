@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button } from 'react-bootstrap';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthProvider';
 import './Header.css'
 // import { MdDarkMode } from "react-icons/fa";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
     return (
       <Navbar bg="light" expand="lg">
         <Container fluid>
