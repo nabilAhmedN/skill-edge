@@ -107,9 +107,8 @@ const Header = () => {
                     <Button variant="outline-primary" onClick={handleLogOut}>
                       <Link
                         className="items-center text-decoration-none text-dark"
-                        to="/login"
                       >
-                        Login
+                        LogOut
                       </Link>
                     </Button>
                   </>
