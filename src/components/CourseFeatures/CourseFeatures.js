@@ -15,7 +15,7 @@ const CourseFeatures = () => {
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
       content: () => componentRef.current,
-      documentTitle: 'emp-data',
+      documentTitle: 'skill-edge',
       onAfterPrint: () => alert('Print succes')
     })
 

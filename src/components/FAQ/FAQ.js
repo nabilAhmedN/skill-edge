@@ -22,7 +22,6 @@ const FAQ = () => {
           <Accordion.Item eventKey="1">
             <Accordion.Header>
               How do I purchase a How do I purchase a SkillEdge membership?
-              membership?
             </Accordion.Header>
             <Accordion.Body>
               To enroll in a membership, create a SkillEdge account. When you
