@@ -12,7 +12,6 @@ const PrivateRoute = ({children}) => {
         return <img className="mx-auto d-block" src={load} alt="" />;
     }
 
-    console.log("provider location",location)
     if(!user){
         return <Navigate to="/login" state={{from: location}} replace></Navigate>
     }

@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
-import Home from "../components/Home/Home"
-import Courses from "../components/Courses/Courses"
-import FAQ from "../components/FAQ/FAQ"
+import Home from "../components/Home/Home";
+import Courses from "../components/Courses/Courses";
+import FAQ from "../components/FAQ/FAQ";
 import Blog from "../components/Blog/Blog";
 import Login from "../components/Login/Login/Login";
 import Register from "../components/Login/Register/Register";
@@ -27,20 +27,22 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/courses",
-        loader: () => fetch("http://localhost:5000/courses"),
+        loader: () => fetch("https://skill-edge-server-ten.vercel.app/courses"),
         element: <Courses />,
       },
       {
         path: "/courses/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/courses/${params.id}`),
+          fetch(
+            `https://skill-edge-server-ten.vercel.app/courses/${params.id}`
+          ),
         element: <CourseFeatures />,
       },
       {
         path: "/premium/:id",
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/premiumCourses/${params.id}`
+            `https://skill-edge-server-ten.vercel.app/premiumCourses/${params.id}`
           ),
         element: (
           <PrivateRoute>

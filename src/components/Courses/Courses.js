@@ -10,7 +10,7 @@ const Courses = () => {
     
     return (
       <div>
-        <h2 className="text-center mb-5">This is Course Page</h2>
+        <h2 className="text-center mt-2 mb-5">Course Page</h2>
         <Row className="mx-5 mb-3">
           <Col lg={2}>
             {courses.map((course) => (

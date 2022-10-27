@@ -7,8 +7,10 @@ const Premium = () => {
   const user = useLoaderData()
   const {title} = user;
     return (
-      <div className="container mt-5 mb-5 ">
-        <h2>{title}</h2>
+      <div className="container mt-1 mb-5 ">
+        <h2 className="text-center">
+          Premium <span style={{ color: "#FD98A7" }}>{title}</span> Course
+        </h2>
         <div className="row d-flex justify-content-center">
           <div className="col-md-4 mt-1">
             <div className="part1 text-center p-3 py-3">
