@@ -43,6 +43,11 @@ const Footer = () => {
           >
             © 2022 Copyright Sill Edge Co.
           </div>
+
+
+          {/* <div class="text-center p-3" style={{backgroundColor:"rgba(0, 0, 0, 0.2"}}>
+    © 2022 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">BlendedLearning.com</a> */}
         </footer>
       </div>
     );
