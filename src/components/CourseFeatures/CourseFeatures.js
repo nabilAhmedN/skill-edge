@@ -1,10 +1,9 @@
-// import React, { useRef } from 'react';
+
 import { useRef } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
 import { useReactToPrint } from "react-to-print";
 
-import './CourseFeatures.css'
 
 const CourseFeatures = () => {
 
@@ -15,9 +14,9 @@ const CourseFeatures = () => {
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
       content: () => componentRef.current,
-      documentTitle: 'skill-edge',
-      onAfterPrint: () => alert('Print succes')
-    })
+      documentTitle: "skill-edge",
+      onAfterPrint: () => alert("Print successfully"),
+    });
 
 
   
