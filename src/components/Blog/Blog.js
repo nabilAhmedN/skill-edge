@@ -5,7 +5,7 @@ const Blog = () => {
     return (
       <div className="container my-5">
         <div className="d-flex flex-column align align-items-center mb-5">
-          <h1>Frequently Asked Questions</h1>
+          <h1>Blog</h1>
         </div>
         <Accordion>
           <Accordion.Item eventKey="0">
@@ -35,7 +35,13 @@ const Blog = () => {
             <Accordion.Header>
               How does the private route work?
             </Accordion.Header>
-            <Accordion.Body></Accordion.Body>
+            <Accordion.Body>
+              The private route component is similar to the public route, the
+              only change is that redirect URL and authenticate condition. If
+              the user is not authenticated he will be redirected to the login
+              page and the user can only access the authenticated routes If he
+              is authenticated (Logged in)
+            </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="3">
             <Accordion.Header>
