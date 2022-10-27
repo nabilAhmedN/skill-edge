@@ -1,11 +1,14 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { useLoaderData } from 'react-router-dom';
+import './Premium.css'
 
-import './Subscription.css'
-
-const Subscription = () => {
+const Premium = () => {
+  const user = useLoaderData()
+  const {title} = user;
     return (
       <div className="container mt-5 mb-5 ">
+        <h2>{title}</h2>
         <div className="row d-flex justify-content-center">
           <div className="col-md-4 mt-1">
             <div className="part1 text-center p-3 py-3">
@@ -54,4 +57,4 @@ const Subscription = () => {
     );
 };
 
-export default Subscription;
+export default Premium;

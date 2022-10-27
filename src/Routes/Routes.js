@@ -8,52 +8,62 @@ import Login from "../components/Login/Login/Login";
 import Register from "../components/Login/Register/Register";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import CourseFeatures from "../components/CourseFeatures/CourseFeatures";
-import Subscription from "../components/Subscription/Subscription";
+import Premium from "../components/Premium/Premium";
+import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Main />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
         path: "/",
-        element: <Main/>,
-        errorElement: <ErrorPage/>,
-        children: [
-            {
-                path: '/',
-                element: <Home/>
-            },
-            {
-                path: '/home',
-                element: <Home/>
-            },
-            {
-                path: "/courses",
-                loader: () => fetch("http://localhost:5000/courses"),
-                element: <Courses/>
-            },
-            {
-                path: "/courses/:id",
-                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`),
-                element: <CourseFeatures/>
-            },
-            {
-                path: "/faq",
-                element: <FAQ/>
-            },
-            {
-                path: "/blog",
-                element: <Blog/>
-            },
-            {
-                path: "/sub",
-                element: <Subscription/>
-            },
-            {
-                path: "/login",
-                element: <Login/>
-            },
-            {
-                path: "/register",
-                element: <Register/>
-            }
-        ]
-    }
-])
+        element: <Home />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/courses",
+        loader: () => fetch("http://localhost:5000/courses"),
+        element: <Courses />,
+      },
+      {
+        path: "/courses/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/courses/${params.id}`),
+        element: <CourseFeatures />,
+      },
+      {
+        path: "/premium/:id",
+        loader: ({ params }) =>
+          fetch(
+            `http://localhost:5000/premiumCourses/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <Premium />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/faq",
+        element: <FAQ />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+    ],
+  },
+]);

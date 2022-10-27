@@ -6,8 +6,9 @@ import {
   FaGoogle,
   FaGithub
 } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link,  useLocation,  useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import ReactTooltip from 'react-tooltip';
 
 const Login = () => {
 
@@ -16,6 +17,14 @@ const Login = () => {
   const { googleProviderLogin, githubProviderLogin, signIn } =
     useContext(AuthContext);
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log("loginlocation",location);
+
+    const from = location.state?.from?.pathname || '/';
+
+    // console.log(from);
+  
   const googleProvider = new GoogleAuthProvider()
 
   const githubProvider = new GithubAuthProvider()
@@ -49,7 +58,8 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         form.reset();
-        setError('')
+        setError('');
+        navigate(from, {replace: true});
       })
       .catch((error) => {
         console.error(error)
@@ -58,7 +68,7 @@ const Login = () => {
   };
 
     return (
-      <div className="w-50 mx-auto bg-light p-4 mt-5">
+      <div className="w-50 mx-auto bg-light p-4 mt-5 logF">
         <Form onSubmit={handleSubmit}>
           <h2 className="text-center text-primary">Please Login</h2>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -81,6 +91,7 @@ const Login = () => {
             />
           </Form.Group>
 
+          <ReactTooltip id="tool" />
           <Button variant="primary" type="submit">
             Login
           </Button>
@@ -91,18 +102,6 @@ const Login = () => {
             New to this website? Please <Link to="/register">Register</Link>
           </small>
         </p>
-        {/* <ButtonGroup vertical>
-          <Button
-            // onClick={handleGoogleSignIn}
-            className="mb-2"
-            variant="outline-primary"
-          >
-            <FaGoogle /> Login with Google
-          </Button>
-          <Button variant="outline-dark">
-            <FaGithub /> Login with GitHub
-          </Button>
-        </ButtonGroup> */}
 
         <div className="d-grid gap-2">
           <Button
@@ -110,11 +109,11 @@ const Login = () => {
             variant="outline-primary"
             size="lg"
           >
-            <FaGoogle />
+            <FaGoogle className="mb-1 me-1" />
             Login with Google
           </Button>
           <Button onClick={handleGithubSignIn} variant="outline-dark" size="lg">
-            <FaGithub />
+            <FaGithub className="mb-1 me-1" />
             Login with GitHub
           </Button>
         </div>

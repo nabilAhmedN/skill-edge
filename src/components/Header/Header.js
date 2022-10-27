@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import './Header.css'
 import { FaUser } from "react-icons/fa";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
+import photo from '../../assets/images/logo.png'
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -19,6 +22,15 @@ const Header = () => {
     return (
       <Navbar bg="light" expand="lg">
         <Container fluid>
+          <Link className="text-decoration-none text-dark" to="/">
+            <img
+              alt=""
+              src={photo}
+              width="30"
+              height="30"
+              className="d-inline-block me-2 align-top"
+            />
+          </Link>
           <Navbar.Brand>
             <Link
               className="items-center text-decoration-none text-dark fw-bolder"
@@ -66,16 +78,8 @@ const Header = () => {
                   Blog
                 </Link>
               </Nav.Link>
-              <Nav.Link>
-                <Link
-                  className="items-center text-decoration-none text-dark"
-                  to="/sub"
-                >
-                  Sub
-                </Link>
-              </Nav.Link>
             </Nav>
-            <div className="d-flex">
+            <div className="d-flex mb-2">
               <div className="form-check form-switch ms-auto mt-3 me-3">
                 <label className="form-check-label ms-3" htmlFor="lightSwitch">
                   <svg
@@ -99,11 +103,13 @@ const Header = () => {
             <Nav>
               <Nav.Link eventKey={2}>
                 {user?.photoURL ? (
-                  <Image
-                    style={{ height: "30px" }}
-                    roundedCircle
-                    src={user?.photoURL}
-                  ></Image>
+                  <Tippy content={user?.displayName}>
+                    <Image
+                      style={{ height: "40px" }}
+                      roundedCircle
+                      src={user?.photoURL}
+                    ></Image>
+                  </Tippy>
                 ) : (
                   <FaUser />
                 )}
@@ -111,7 +117,7 @@ const Header = () => {
               <Nav.Link>
                 {user?.uid ? (
                   <>
-                    <span>{user?.displayName}</span>
+                    <span className="me-2 mt-4">{user?.displayName}</span>
                     <Button variant="outline-primary" onClick={handleLogOut}>
                       <Link className="items-center text-decoration-none text-dark">
                         LogOut

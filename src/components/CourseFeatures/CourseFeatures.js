@@ -1,7 +1,7 @@
 // import React, { useRef } from 'react';
 import { useRef } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { useReactToPrint } from "react-to-print";
 
 import './CourseFeatures.css'
@@ -10,7 +10,7 @@ const CourseFeatures = () => {
 
     const course = useLoaderData()
 
-    const { title, titleName, photo, about } = course;
+    const { id, title, titleName,name, photo, about } = course;
 
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
@@ -38,8 +38,21 @@ const CourseFeatures = () => {
             src={photo}
           />
           <Card.Body>
-            <Card.Text className="fw-bolder">{title}</Card.Text>
-            <Card.Text className="">{about}</Card.Text>
+            <Card.Text className="fw-bolder">
+              <h3>{title}</h3>
+            </Card.Text>
+            <Card.Text className="">
+              <h4 className="fw-light">{name}</h4>
+              <p>{about}</p>
+              <Button>
+                <Link
+                  className="text-decoration-none text-light"
+                  to={`/premium/${id}`}
+                >
+                  Go to Premium
+                </Link>
+              </Button>
+            </Card.Text>
           </Card.Body>
         </Card>
       </div>
