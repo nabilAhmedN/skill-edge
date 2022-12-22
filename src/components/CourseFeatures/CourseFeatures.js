@@ -22,7 +22,7 @@ const CourseFeatures = () => {
   
 
     return (
-      <div className="container mt-4" ref={componentRef}>
+      <div className="container mt-4 mb-5" ref={componentRef}>
         <div className="d-flex justify-content-between">
           <h1>{titleName}</h1>
           <Button variant="light" onClick={handlePrint} className="me-2 ">

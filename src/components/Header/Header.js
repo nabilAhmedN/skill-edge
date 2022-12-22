@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Image } from 'react-bootstrap';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -6,80 +6,85 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import './Header.css'
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaMoon, FaSun } from "react-icons/fa";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import photo from '../../assets/images/logo.png'
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
 
   const handleLogOut = () => {
      logOut()
        .then(() => {})
        .catch((error) => console.error(error));
   }
+
+   const handleToggle = () => {
+       setOpen(!open);
+   };
     return (
-      <Navbar bg="light" expand="lg">
-        <Container fluid>
-          <Link className="text-decoration-none text-dark" to="/">
-            <img
-              alt=""
-              src={photo}
-              width="30"
-              height="30"
-              className="d-inline-block me-2 align-top"
-            />
-          </Link>
-          <Navbar.Brand>
-            <Link
-              className="items-center text-decoration-none text-dark fw-bolder"
-              to="/"
-            >
-              Skill Edge
-            </Link>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
-              navbarScroll
-            >
-              <Nav.Link>
-                <Link
-                  className="items-center text-decoration-none text-dark"
-                  to="/home"
-                >
-                  Home
+        <Navbar bg="light" expand="lg">
+            <Container fluid>
+                <Link className="text-decoration-none text-dark" to="/">
+                    <img
+                        alt=""
+                        src={photo}
+                        width="30"
+                        height="30"
+                        className="d-inline-block me-2 align-top"
+                    />
                 </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link
-                  className="items-center text-decoration-none text-dark"
-                  to="/courses"
-                >
-                  Courses
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link
-                  className="items-center text-decoration-none text-dark"
-                  to="/faq"
-                >
-                  FAQ
-                </Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link
-                  className="items-center text-decoration-none text-dark"
-                  to="/blog"
-                >
-                  Blog
-                </Link>
-              </Nav.Link>
-            </Nav>
-            <div className="d-flex mb-2">
+                <Navbar.Brand>
+                    <Link
+                        className="items-center text-decoration-none text-dark fw-bolder"
+                        to="/"
+                    >
+                        Skill Edge
+                    </Link>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Navbar.Collapse id="navbarScroll">
+                    <Nav
+                        className="me-auto my-2 my-lg-0"
+                        style={{ maxHeight: "100px" }}
+                        navbarScroll
+                    >
+                        <Nav.Link>
+                            <Link
+                                className="items-center text-decoration-none text-dark"
+                                to="/home"
+                            >
+                                Home
+                            </Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link
+                                className="items-center text-decoration-none text-dark"
+                                to="/courses"
+                            >
+                                Courses
+                            </Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link
+                                className="items-center text-decoration-none text-dark"
+                                to="/faq"
+                            >
+                                FAQ
+                            </Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link
+                                className="items-center text-decoration-none text-dark"
+                                to="/blog"
+                            >
+                                Blog
+                            </Link>
+                        </Nav.Link>
+                    </Nav>
+                    {/* <div className="d-flex mb-2">
               <div className="form-check form-switch ms-auto mt-3 me-3">
                 <label className="form-check-label ms-3" htmlFor="lightSwitch">
                   <svg
@@ -99,49 +104,57 @@ const Header = () => {
                   id="lightSwitch"
                 />
               </div>
-            </div>
-            <Nav>
-              <Nav.Link eventKey={2}>
-                {user?.photoURL ? (
-                  <Tippy content={user?.displayName}>
-                    <Image
-                      style={{ height: "40px" }}
-                      roundedCircle
-                      src={user?.photoURL}
-                    ></Image>
-                  </Tippy>
-                ) : (
-                  <FaUser />
-                )}
-              </Nav.Link>
-              <Nav.Link>
-                {user?.uid ? (
-                  <>
-                    <span className="me-2 mt-4">{user?.displayName}</span>
-                    <Button variant="outline-primary" onClick={handleLogOut}>
-                      <Link className="items-center text-decoration-none text-dark">
-                        LogOut
-                      </Link>
+            </div> */}
+                    <Button onClick={handleToggle}>
+                        {open ? <FaMoon></FaMoon> : <FaSun></FaSun>}
                     </Button>
-                  </>
-                ) : (
-                  <>
-                    <Button variant="outline-primary">
-                      <Link
-                        className="items-center text-decoration-none text-dark"
-                        to="/login"
-                      >
-                        Login
-                      </Link>
-                    </Button>
-                    {/* <Link to="/register">Register</Link> */}
-                  </>
-                )}
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+                    <Nav>
+                        <Nav.Link eventKey={2}>
+                            {user?.photoURL ? (
+                                <Tippy content={user?.displayName}>
+                                    <Image
+                                        style={{ height: "40px" }}
+                                        roundedCircle
+                                        src={user?.photoURL}
+                                    ></Image>
+                                </Tippy>
+                            ) : (
+                                <FaUser />
+                            )}
+                        </Nav.Link>
+                        <Nav.Link>
+                            {user?.uid ? (
+                                <>
+                                    <span className="me-2 mt-4">
+                                        {user?.displayName}
+                                    </span>
+                                    <Button
+                                        variant="outline-primary"
+                                        onClick={handleLogOut}
+                                    >
+                                        <Link className="items-center text-decoration-none text-dark">
+                                            LogOut
+                                        </Link>
+                                    </Button>
+                                </>
+                            ) : (
+                                <>
+                                    <Button variant="outline-primary">
+                                        <Link
+                                            className="items-center text-decoration-none text-dark"
+                                            to="/login"
+                                        >
+                                            Login
+                                        </Link>
+                                    </Button>
+                                    {/* <Link to="/register">Register</Link> */}
+                                </>
+                            )}
+                        </Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 };
 
