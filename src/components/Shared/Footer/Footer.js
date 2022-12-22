@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { BsFacebook } from "react-icons/bs";
 import { BsGithub } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
+import './Footer.css'
 const Footer = () => {
     return (
       <div>
-        <footer className="bg-dark text-center text-white">
+        <footer className="bg-dark text-center text-white footer">
           <div className="container p-4">
             <section className="mb-4">
               <Link
@@ -41,7 +42,7 @@ const Footer = () => {
             className="text-center p-3"
             style={{ backgroundColor: "rgba(0, 0, 0, 0.2" }}
           >
-            © 2022 Copyright Sill Edge Co.
+            © 2022 Copyright Skill Edge Co.
           </div>
 
 
